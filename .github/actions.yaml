@@ -1,0 +1,22 @@
+name: Approval
+
+jobs:
+  initial_stuff:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo some stuff
+        shell: bash
+        run: echo "$GITHUB_CONTEXT"
+  approval:
+    runs-on: ubuntu-latest
+    environment: approvers
+    needs: initial_stuff
+    steps:
+      - name: echo
+        run: echo "Approved!! Huzzah!!"
+  now_stuff:
+    runs-on: 'ubuntu-latest'
+    needs: [initial_stuff, approval]
+    steps:
+      - name: echo
+        run: echo "Now some approved stuff!"
