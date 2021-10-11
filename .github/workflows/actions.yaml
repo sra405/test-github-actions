@@ -1,5 +1,13 @@
 name: Approval
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
   initial_stuff:
     runs-on: ubuntu-latest
