@@ -11,6 +11,7 @@ jobs:
           repository: sra405/github-actions
           token: ${{ secrets.GH_PAT }}
           path: .github/actions
+          branch: main
       - uses: actions/checkout@v3
       - id: test_s3_params
-        uses: .github/actions/s3-learning-resources
+        uses: ./.github/actions/s3-learning-resources
