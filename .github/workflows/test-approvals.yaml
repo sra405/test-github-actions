@@ -3,10 +3,10 @@ name: Approval
 on:
   push:
     branches:
-      - main
+      - test-approvals
   pull_request:
     branches:
-      - main
+      - test-approvals
 
 jobs:
   approval:
