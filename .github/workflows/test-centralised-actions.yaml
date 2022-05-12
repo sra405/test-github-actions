@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to test centralised actions
     steps:
+      - uses: actions/checkout@v3
       - name: Checkout private tools
         uses: actions/checkout@v3
         with:
@@ -12,6 +13,8 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           path: .github/actions
           branch: main
-      - uses: actions/checkout@v3
       - id: test_s3_params
         uses: ./.github/actions/s3-learning-resources
+        with:
+          production-branches: "draft"
+          staging-branches: "main,master"
