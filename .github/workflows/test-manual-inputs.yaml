@@ -1,19 +1,20 @@
 # shamelessly stolen from:
 # https://github.blog/changelog/2021-11-10-github-actions-input-types-for-manual-workflows/
-name: Mixed inputs
+name: Test inputs
 
 on:
   workflow_dispatch:
     inputs:
-      name:
-        type: choice
-        description: Who to greet
-        options: 
-        - monalisa
-        - cschleiden
-      message:
+      repo:
         required: true
-      use-emoji:
+      branch:
+        type: choice
+        description: Which branch to deploy
+        options: 
+        - master
+        - draft
+      dummy-boolean:
+        required: false
         type: boolean
         description: Include  emojis
 
@@ -21,6 +22,8 @@ jobs:
   greet:
     runs-on: ubuntu-latest
 
+    name: Repo ${{ github.event.inputs.repo }} - Branch ${{ github.event.inputs.branch }}
+
     steps:
     - name: Send greeting
-      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", ""]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+      run: echo "Running '${{ github.event.inputs.repo }}' on branch '${{ github.event.inputs.branch }}'"
