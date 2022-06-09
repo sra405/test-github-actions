@@ -22,7 +22,8 @@ jobs:
   greet:
     runs-on: ubuntu-latest
 
-    name: Repo ${{ github.event.inputs.repo }} - Branch ${{ github.event.inputs.branch }}
+    name: ${{ github.event.inputs.repo }} - ${{ github.event.inputs.branch }}
+    caption: ${{ github.event.inputs.repo }} - ${{ github.event.inputs.branch }}
 
     steps:
     - name: Send greeting
